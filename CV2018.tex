@@ -1,0 +1,346 @@
+%!TEX TS-program = lualatex
+\documentclass[]{friggeri-cv}
+\usepackage{hyperref}
+\usepackage{color}
+
+\hypersetup{
+    colorlinks=false,       % no lik border color
+    allbordercolors=white    % white border color for all
+}
+%\addbibresource{bibliography.bib}
+
+\definecolor{pblue}{RGB}{0,0,0}
+
+% References 3 columns
+\newcommand{\cvRefsThreeCols}[3]{
+  \begin{minipage}[t]{.3\textwidth}#1\end{minipage}
+  \hfill
+  \begin{minipage}[t]{.3\textwidth}#2\end{minipage}
+  \hfill
+  \begin{minipage}[t]{.3\textwidth}#3\end{minipage}
+}
+
+% Skills 2 columns
+\newcommand{\cvSkillsTwoCols}[2]{
+  \begin{minipage}[t]{.5\textwidth}#1\end{minipage}
+  \hfill
+  \begin{minipage}[t]{.4\textwidth}#2\end{minipage}
+}
+
+\newcommand{\cvreference}[5]{
+    {\headingfont\color{headercolor}#1}\\
+    {#2}
+    \begin{flushright}
+    {\faEnvelope~\href{mailto:#3@#4}{\textbf{#3}@#4}\\}
+    {\faMobile~#5\\}
+    \end{flushright}
+}
+
+
+% tikz star rating
+%\newcommand\score[2]{
+%\pgfmathsetmacro\pgfxa{#1+1}
+%\tikzstyle{scorestars}=[star, star points=5, star point ratio=2.25, inner sep=0.15em,anchor=outer point 3]
+%\begin{tikzpicture}[baseline]
+%  \foreach \i in {1,...,#2} {
+%    \pgfmathparse{(\i<=#1?"lightgray":"white")}
+%    \edef\starcolor{\pgfmathresult}
+%    \draw (\i*1em,0) node[name=star\i,scorestars,fill=\starcolor]  {};
+%   }
+%   \pgfmathparse{(#1>int(#1)?int(#1+1):0}
+%   \let\partstar=\pgfmathresult
+%   \ifnum\partstar>0
+%     \pgfmathsetmacro\starpart{#1-(int(#1))}
+%     \path [clip] ($(star\partstar.outer point 3)!(star\partstar.outer point 2)!(star\partstar.outer point 4)$) rectangle
+%    ($(star\partstar.outer point 2 |- star\partstar.outer point 1)!\starpart!(star\partstar.outer point 1 -| star\partstar.outer point 5)$);
+%     \fill (\partstar*1em,0) node[scorestars,fill=lightgray]  {};
+%   \fi
+%
+%,\end{tikzpicture}
+%}
+
+\begin{document}
+\header{Beno\^{i}t~}{Pasquier}
+
+\section{Affiliation}
+
+
+    Department of Earth System Science \hfill
+    \faEnvelope~\href{mailto:pasquieb@uci.edu}{\textbf{pasquieb}@uci.edu} \\
+    University of California, Irvine \hfill
+    \faEnvelope~\href{mailto:briochemc@gmail.com}{\textbf{briochemc}@gmail.com} \\
+    California, CA, 92697\hfill \faMobile~+1 949 558 1022 \\
+    USA \hfill \faSkype~briochemc
+
+
+
+\section{Research Interests}
+  A fascinating consequence of the fluid nature of open-ocean ecosystems and nutrient cycles is that biological production in one part of the ocean can influence biological production on the other side of the world.
+  My research focuses on addressing fundamental scientific questions for global ocean biogeochemical cycles, using cutting-edge mathematical tools.
+  My focus has been on the global biological pump, and the phosphorus, silicon, and iron cycles.
+  I would like to further investigate interactions between micronutrient and macronutrient cycles using novel Green function based mathematical diagnostics.
+  There is a need to represent dominant biogeochemical processes using models that are simultaneously simple, efficient, suitable for novel diagnostics, and that still retain a mechanistic behavior so that the perturbation experiments and predictions we make are correct.
+  I am captivated by the potential of these techniques: by providing clear quantitative results, they help decipher complex global interactions of the oceanic nutrient cycles.
+
+
+\section{Education}
+\begin{entrylist}
+  \entry
+    {2013 - 2017}
+    {Ph.D. in Applied Mathematics}
+    {University of New South Wales, Sydney, Australia}
+    {Supervisor: \textbf{Mark Holzer}.
+    Modeling and diagnosing ocean biogeochemical cycles.\\
+    \textbf{Thesis title}: \emph{The Ocean's Global Iron, Phosphorus, and Silicon Cycles: Inverse Modelling and Novel Diagnostics}.
+    \begin{itemize}
+        \item Global Biogeochemical Cycles, Global Biological Pump
+        \item Ecosystem Modeling \& Biogenic Transport Modeling
+        \item Green Functions Techniques (Path Densities, Flow Rates, Time Scales)
+        \item Inverse Modeling (Newton Solver)
+        \item Iron Control
+        \item Nutrient Trapping
+    \end{itemize}
+    }
+
+  \entry
+    {2010}
+    {M.Sc. in Environmental Science}
+    {University of New South Wales, Sydney, Australia}
+    {Study of the nature of environmental problems and the methodology of their evaluation and management.
+    \begin{itemize}
+        \item Geophysical Fluid Dynamics (\textbf{Mark Holzer})
+        \item Project Management, Environmental Risk Management
+    \end{itemize}
+    }
+
+  \entry
+    {2007 - 2008}
+    {M.Sc. in Finance Mathematics}
+    {Paris Dauphine + ENSAE ParisTech, Paris, France}
+    {MASEF (Mathematics of Insurance, Economics and Finance) Finance specialty.
+    \begin{itemize}
+        \item Stochastic Calculus, Levy Processes with Jumps
+        \item Stochastic Differential Equations
+        \item Numerical Methods (Monte Carlo)
+    \end{itemize}
+    }
+
+  \entry
+    {2004 - 2007}
+    {M.Sc. in Mathematics \& Engineering}
+    {\'{E}cole Polytechnique, Palaiseau, France}
+    {Pure mathematics specialisation.
+    \begin{itemize}
+        \item Algebra, Arithmetics, Numerical Methods
+        \item Differential Topology, Relativity
+        \item Physics, Biology
+    \end{itemize}
+    }
+
+  \entry
+    {2001 - 2004}
+    {Preparatory Classes}
+    {Lyc\'{e}e Mass\'{e}na, Nice, France}
+    {French Preparatory Classes, mathematics specialty.
+    \begin{itemize}
+        \item Linear Algebra, Topology, Numerical Methods
+        \item Mechanics, Electromagnetism, Thermodynamics
+    \end{itemize}
+    }
+
+
+\end{entrylist}
+
+\section{Professional {\color{pblue}Exp}erience}
+\begin{entrylist}
+  \entry
+    {Sep$\,$17 - Present}
+    {Postdoctoral Researcher}
+    {University of California, Irvine, CA, USA}
+    {Working on improving global biogeochemistry models with J.\,Keith Moore and Fran\c{c}ois Primeau.}
+
+
+  \entry
+    {Mar$\,$17 - Aug$\,$17}
+    {Casual Research Assistant}
+    {University of New South Wales, Sydney, Australia}
+    {Continuing PhD work with M.\,Holzer.
+    }
+
+  \entry
+    {Jun$\,$16 - Dec$\,$16}
+    {Mathematics Tutor}
+    {University of New South Wales, Sydney, Australia}
+    {\emph{Numerical Methods and Statistics}, 2nd year.
+    }
+
+  \entry
+    {May$\,$11 - Aug$\,$12}
+    {Proposal Engineer}
+    {Degr\'{e}mont, Suez Environnement, Sydney, Australia}
+    {Managed tendering projects for Design, Construction, Maintenance and Operation contracts.
+    Participated in business development, liaising with potential clients, advertising on company capabilities.
+    }
+
+  \entry
+    {Jul$\,$08 - Jun$\,$09}
+    {Currency Trader Assistant}
+    {Soci\'{e}t\'{e} G\'{e}n\'{e}rale Investment Banking, Paris, France}
+    {MASEF Internship, researched new detection and calculation techniques for high frequency data used in automated arbitrage.
+    In particular, developed real-time, unbiased stochastic moments calculation algorithms.
+    }
+
+
+  \entry
+    {Apr$\,$07 - Jul$\,$07}
+    {Mathematics Research Intern}
+    {\'{E}cole Polytechnique, Palaiseau, France}
+    {\'{E}cole Polytechnique Specialty (Mathematics) Internship at the Laurent Schwartz Mathematics Center under the direction of \textbf{Jean Lannes}. Calculated the Witt ring of quadratic forms defined on number fields, on the field of $p$-adic numbers, and on Dedekind rings such as the integers.
+    }
+
+
+  \entry
+    {Sep$\,$04 - Feb$\,$05}
+    {IT Intern}
+    {Bioforce, Lyon, France}
+    {Bioforce provides training and careers advice in aid programmes and logistics. Developed an Access database to improve communication and management.
+    }
+
+\end{entrylist}
+
+\section{Other Skills}
+\cvSkillsTwoCols{
+\subsection{Programming}
+\vspace{5pt}
+\begin{tabular}{rl}
+     {\thinfont\color{headercolor}{MATLAB}} & {Extensive use}\\
+     {\thinfont\color{headercolor}{Ruby}} & {Casual use}\\
+     {\thinfont\color{headercolor}{java, C++}} & {Competent}\\
+     {\thinfont\color{headercolor}{Python}} & {Little experience}\\
+\end{tabular}
+}{
+\subsection{Languages}
+\vspace{5pt}
+\begin{tabular}{rl}
+     {\thinfont\color{headercolor}{French}} & {First language}  \\
+     {\thinfont\color{headercolor}{English}} & {Fluent}\\
+     {\thinfont\color{headercolor}{Italian}} & {Intermediate}  \\
+     {\thinfont\color{headercolor}{Japanese}} & {Novice}\\
+\end{tabular}
+}
+
+
+\vspace{5pt}
+\section{References}
+\cvRefsThreeCols{
+    \cvreference
+      {Mark Holzer}
+      {Department of Applied Mathematics\\
+       School of Mathematics and Statistics\\
+       University of New South Wales\\
+       NSW, 2035, Australia}
+      {mholzer}
+      {unsw.edu.au}
+      {+61 2 9385 7109}%
+  }{
+    \cvreference
+      {Trevor McDougall}
+      {Department of Applied Mathematics\\
+       School of Mathematics and Statistics\\
+       University of New South Wales\\
+       NSW, 2035, Australia}
+      {trevor.mcdougall}
+      {unsw.edu.au}
+      {+61 2 9385 3498}
+  }{
+   % \vspace{10pt}
+    \cvreference
+      {Katrin Meissner}
+      {Climate Change Research Centre\\
+       University of New South Wales\\
+       NSW, 2035, Australia}
+      {k.meissner}
+      {unsw.edu.au}
+      {+61 2 9385 8962}
+   % \cvreference
+   %   {Andreas Oschlies?}
+   %   {GEOMAR Helmholtz Centre for Ocean Research Kiel\\
+   %    D\"{u}sternbrooker Weg 20\\
+   %    D-24105 Kiel, Germany}
+   %   {aoschlies}
+   %   {geomar.de}
+   %   {+49 431 600-1936}%
+  }
+\vspace{10pt}
+
+\section{Publications}
+
+Pasquier, B. and M.\,Holzer, \emph{Iron fertilization efficiency and the number of past and future regenerations of iron in the ocean}, Global Biogeochemical Cycles, under review.
+
+Pasquier, B. and M.\,Holzer, \emph{Inverse-model estimates of the ocean's coupled phosphorus, silicon, and iron cycles}, Biogeosciences, 14(18), 4125--4159, \href{http://dx.doi.org/10.5194/bg-14-4125-2017}{doi: 10.5194/bg-14-4125-2017}, 2017.
+
+Holzer, M., M.\,Frants, and B.\,Pasquier, \emph{The age of iron and iron source attribution in the ocean}, Global Biogeochem. Cycles, 30, 1454--1474, \href{http://dx.doi.org/10.1002/2016GB005418}{doi: 10.1002/2016GB005418}, 2016.
+
+Pasquier, B. and M.\,Holzer, \emph{The plumbing of the global biological pump: Efficiency control through leaks, pathways, and time scales}, Journal of Geophysical Research: Oceans, 121, 6367--6388, \href{http://dx.doi.org/10.1002/2016JC011821}{doi: 10.1002/2016JC011821}, 2016.
+
+
+
+%\subsection{In Press}
+
+%\subsection{Under Review}
+
+%\subsection{In Preparation}
+
+
+
+\newpage
+
+\section{Con{\color{pblue}f}erence {\color{pblue}Pres}entations}
+\begin{entrylist}
+
+  \entry{February 2018}{Ocean Sciences Meeting}{Portland, Oregon, USA}
+  {Title: \emph{Inverse-model estimates of the ocean's coupled phosphorus, silicon, and iron cycles.}
+  }
+
+  \entry{February 2017}{AMOS National Conference}{Canberra, Australia}
+  {Title: \emph{Response of the biological pump to perturbations in the iron supply: Global teleconnections diagnosed using an inverse model of the coupled phosphorus-silicon-iron nutrient cycles.}
+  }
+
+  \entry{February 2016}{Ocean Sciences Meeting}{New Orleans, Louisiana, USA}
+  {Title: \emph{Iron control on global productivity: an efficient inverse model of the ocean's coupled phosphate, silicon, and iron cycles.}
+  }
+
+  \entry{July 2015}{AMOS National Conference}{Brisbane, Australia}
+  {Title: \emph{The plumbing of the global biological pump.}
+  }
+
+
+
+\end{entrylist}
+
+\section{Honors and Awards}
+\begin{entrylist}
+
+  \entry{2015}{Scolarship}{Cuomo Foundation, Monaco}
+  {}
+
+  \entry{2014}{Scolarship}{Fr\`{e}res Louis et Max Principale Foundation, Monaco}
+  {}
+
+    \entry{2014 - 2016}{Scolarship}{Monaco Government, Monaco}
+  {Higher studies scholarship}
+
+  \entry{2013}{Scolarship}{Monaco Government, Monaco}
+  {H.S.H.~ The Prince Albert II Exceptional Scholarship}
+
+  \entry{2013 - 2016}{Scolarship}{Monaco Scientific Centre, Monaco}
+  {}
+
+  \entry{2013 - 2016}{Tuition Fee Scholarship}{Graduate Research Shcool, UNSW, Sydney, Australia}
+  {}
+
+  \entry{2004 - 2008}{Scholarship}{Monaco Government, Monaco}{Higher studies scholarship}
+
+\end{entrylist}
+
+\end{document}
