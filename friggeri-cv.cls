@@ -184,7 +184,7 @@
   {\thinfont\color{headercolor} #1} & \parbox[t]{.85\textwidth}{%
     \hspace{0pt}{\headingfont\color{headercolor}{#2}}%
     \hfill%
-    {\thinfont\color{headercolor} #3}\\%
+    {\thinfont\small\color{headercolor} #3}\\%
     {\color{textcolor}#4}\vspace{\parsep}%
   }\\
 }
