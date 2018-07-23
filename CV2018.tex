@@ -1,23 +1,22 @@
 %!TEX TS-program = lualatex
-\documentclass[]{friggeri-cv}
-\usepackage{hyperref}
-\usepackage{color}
+\documentclass[12pt]{friggeri-cv}
+\addbibresource{mypapers.bib}
 
+\usepackage{hyperref}
 \hypersetup{
-    colorlinks=false,       % no lik border color
-    allbordercolors=white    % white border color for all
+    colorlinks=true,       % no lik border color
+    allcolors=earthblue,         % color of internal links (change box color with linkbordercolor)
+    allbordercolors=white  % white border color for all
 }
 %\addbibresource{bibliography.bib}
 
 \definecolor{pblue}{RGB}{0,0,0}
 
-% References 3 columns
-\newcommand{\cvRefsThreeCols}[3]{
-  \begin{minipage}[t]{.3\textwidth}#1\end{minipage}
+% References 2 columns
+\newcommand{\cvRefsTwoCols}[2]{
+  \begin{minipage}[t]{.45\textwidth}#1\end{minipage}
   \hfill
-  \begin{minipage}[t]{.3\textwidth}#2\end{minipage}
-  \hfill
-  \begin{minipage}[t]{.3\textwidth}#3\end{minipage}
+  \begin{minipage}[t]{.45\textwidth}#2\end{minipage}
 }
 
 % Skills 2 columns
@@ -35,6 +34,13 @@
     {\faMobile~#5\\}
     \end{flushright}
 }
+
+
+
+
+% Remove asterisk in bibliography
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
 
 
 % tikz star rating
@@ -65,40 +71,49 @@
 \section{Affiliation}
 
 
-    Department of Earth System Science \hfill
-    \faEnvelope~\href{mailto:pasquieb@uci.edu}{\textbf{pasquieb}@uci.edu} \\
-    University of California, Irvine \hfill
-    \faEnvelope~\href{mailto:briochemc@gmail.com}{\textbf{briochemc}@gmail.com} \\
-    California, CA, 92697\hfill \faMobile~+1 949 558 1022 \\
-    USA \hfill \faSkype~briochemc
+Department of Earth System Science \hfill
+  \faEnvelope~\href{mailto:pasquieb@uci.edu}{\textbf{pasquieb}@uci.edu} \\
+University of California, Irvine \hfill
+  \faEnvelope~\href{mailto:briochemc@gmail.com}{\textbf{briochemc}@gmail.com} \\
+California, CA, 92697 \hfill
+\faMobile~+1 949 558 1022 / \faSkype~briochemc\\
+USA \hfill
+  \href{https://github.com/briochemc}{\faGithub~briochemc} 
+    / \href{https://gitlab.com/benoitpasquier}{\faGitlab~benoitpasquier}
 
 
 
 \section{Research Interests}
-  A fascinating consequence of the fluid nature of open-ocean ecosystems and nutrient cycles is that biological production in one part of the ocean can influence biological production on the other side of the world.
-  My research focuses on addressing fundamental scientific questions for global ocean biogeochemical cycles, using cutting-edge mathematical tools.
-  My focus has been on the global biological pump, and the phosphorus, silicon, and iron cycles.
-  I would like to further investigate interactions between micronutrient and macronutrient cycles using novel Green function based mathematical diagnostics.
-  There is a need to represent dominant biogeochemical processes using models that are simultaneously simple, efficient, suitable for novel diagnostics, and that still retain a mechanistic behavior so that the perturbation experiments and predictions we make are correct.
-  I am captivated by the potential of these techniques: by providing clear quantitative results, they help decipher complex global interactions of the oceanic nutrient cycles.
+A fascinating consequence of the fluid nature of open-ocean ecosystems and nutrient cycles is that perturbations in one part of the ocean can influence biological production on the other side of the world.
+My focus has been on this interplay between the ocean's circulation and biology on the global scale.
 
+During my PhD, I investigated fundamental scientific questions of global ocean biogeochemical cycles using cutting-edge mathematical tools.
+Specifically, I explored the teleconnections of the global biological pump by developing and using state-of-the-art inverse models of the phosphorus, silicon, and iron cycles.
+More recently, through my postdoctoral appointment, I have been developing tools to improve standard forward biogeochemistry models via offline optimization strategies.
+I have also developed novel Green-function-based diagnostics to investigate the marine iron cycle with more detail than ever before, and I plan to leverage the potential of these new diagnostics by applying them to other global biogeochemical cycles.
 
+There is a need to improve the current representation of biogeochemical processes in models.
+There is also ample room to develop new models that are simultaneously simple to use and understand, efficient and fast to run, and suitable for the novel diagnostics I have become familiar with.
+By providing clear quantitative answers, these tools help decipher complex global interactions of the oceanic nutrient cycles.
+In addition, I strive to push our scientific community towards more openness, to facilitate collaboration, code review, and reproducibility.
+
+\newpage
 \section{Education}
 \begin{entrylist}
   \entry
-    {2013 - 2017}
+    {2013\textemdash2017}
     {Ph.D. in Applied Mathematics}
     {University of New South Wales, Sydney, Australia}
-    {Supervisor: \textbf{Mark Holzer}.
+    {Supervisor: \hyperref[MH]{\textbf{Mark Holzer}}.
     Modeling and diagnosing ocean biogeochemical cycles.\\
     \textbf{Thesis title}: \emph{The Ocean's Global Iron, Phosphorus, and Silicon Cycles: Inverse Modelling and Novel Diagnostics}.
     \begin{itemize}
         \item Global Biogeochemical Cycles, Global Biological Pump
         \item Ecosystem Modeling \& Biogenic Transport Modeling
         \item Green Functions Techniques (Path Densities, Flow Rates, Time Scales)
-        \item Inverse Modeling (Newton Solver)
-        \item Iron Control
-        \item Nutrient Trapping
+        \item Inverse Modeling (Newton's Method for Root Finding and Optimization)
+        \item Iron Control on the Global Biological Pump
+        \item Southern Ocean Nutrient Trapping
     \end{itemize}
     }
 
@@ -108,16 +123,17 @@
     {University of New South Wales, Sydney, Australia}
     {Study of the nature of environmental problems and the methodology of their evaluation and management.
     \begin{itemize}
-        \item Geophysical Fluid Dynamics (\textbf{Mark Holzer})
-        \item Project Management, Environmental Risk Management
+      \item Geophysical Fluid Dynamics (taught by \hyperref[MH]{\textbf{Mark Holzer}})
+      \item Oceanography (\hyperref[KM]{\textbf{Katrin Meissner}})
+      \item Project Management, Environmental Risk Management
     \end{itemize}
     }
 
   \entry
-    {2007 - 2008}
+    {2007\textemdash2008}
     {M.Sc. in Finance Mathematics}
     {Paris Dauphine + ENSAE ParisTech, Paris, France}
-    {MASEF (Mathematics of Insurance, Economics and Finance) Finance specialty.
+    {MASEF (Mathematics of Insurance, Economics and Finance), Finance specialty.
     \begin{itemize}
         \item Stochastic Calculus, Levy Processes with Jumps
         \item Stochastic Differential Equations
@@ -126,10 +142,10 @@
     }
 
   \entry
-    {2004 - 2007}
+    {2004\textemdash2007}
     {M.Sc. in Mathematics \& Engineering}
     {\'{E}cole Polytechnique, Palaiseau, France}
-    {Pure mathematics specialisation.
+    {Pure mathematics specialization.
     \begin{itemize}
         \item Algebra, Arithmetics, Numerical Methods
         \item Differential Topology, Relativity
@@ -138,7 +154,7 @@
     }
 
   \entry
-    {2001 - 2004}
+    {2001\textemdash2004}
     {Preparatory Classes}
     {Lyc\'{e}e Mass\'{e}na, Nice, France}
     {French Preparatory Classes, mathematics specialty.
@@ -151,31 +167,31 @@
 
 \end{entrylist}
 
+\newpage
 \section{Professional {\color{pblue}Exp}erience}
 \begin{entrylist}
   \entry
-    {Sep$\,$17 - Present}
-    {Postdoctoral Researcher}
+    {Sep$\,$17\textemdash{}Present}
+    {Postdoctoral Research Scholar}
     {University of California, Irvine, CA, USA}
-    {Working on improving global biogeochemistry models with J.\,Keith Moore and Fran\c{c}ois Primeau.}
-
+    {Working on developing new tools and on improving global biogeochemistry models with \hyperref[JKM]{\textbf{J.\,Keith Moore}} and \hyperref[FP]{\textbf{Fran\c{c}ois Primeau}}.}
 
   \entry
-    {Mar$\,$17 - Aug$\,$17}
+    {Mar$\,$17\textemdash{}Aug$\,$17}
     {Casual Research Assistant}
     {University of New South Wales, Sydney, Australia}
-    {Continuing PhD work with M.\,Holzer.
+    {Continuing PhD work with \hyperref[MH]{\textbf{Mark Holzer}}.
     }
 
   \entry
-    {Jun$\,$16 - Dec$\,$16}
+    {Jun$\,$16\textemdash{}Dec$\,$16}
     {Mathematics Tutor}
     {University of New South Wales, Sydney, Australia}
     {\emph{Numerical Methods and Statistics}, 2nd year.
     }
 
   \entry
-    {May$\,$11 - Aug$\,$12}
+    {May$\,$11\textemdash{}Aug$\,$12}
     {Proposal Engineer}
     {Degr\'{e}mont, Suez Environnement, Sydney, Australia}
     {Managed tendering projects for Design, Construction, Maintenance and Operation contracts.
@@ -183,16 +199,16 @@
     }
 
   \entry
-    {Jul$\,$08 - Jun$\,$09}
+    {Jul$\,$08\textemdash{}Jun$\,$09}
     {Currency Trader Assistant}
     {Soci\'{e}t\'{e} G\'{e}n\'{e}rale Investment Banking, Paris, France}
     {MASEF Internship, researched new detection and calculation techniques for high frequency data used in automated arbitrage.
-    In particular, developed real-time, unbiased stochastic moments calculation algorithms.
+    In particular, developed algorithms to evaluate unbiased stochastic moments in real-time.
     }
 
 
   \entry
-    {Apr$\,$07 - Jul$\,$07}
+    {Apr$\,$07\textemdash{}Jul$\,$07}
     {Mathematics Research Intern}
     {\'{E}cole Polytechnique, Palaiseau, France}
     {\'{E}cole Polytechnique Specialty (Mathematics) Internship at the Laurent Schwartz Mathematics Center under the direction of \textbf{Jean Lannes}. Calculated the Witt ring of quadratic forms defined on number fields, on the field of $p$-adic numbers, and on Dedekind rings such as the integers.
@@ -200,7 +216,7 @@
 
 
   \entry
-    {Sep$\,$04 - Feb$\,$05}
+  {Sep$\,$04\textemdash{}Feb$\,$05}
     {IT Intern}
     {Bioforce, Lyon, France}
     {Bioforce provides training and careers advice in aid programmes and logistics. Developed an Access database to improve communication and management.
@@ -210,13 +226,12 @@
 
 \section{Other Skills}
 \cvSkillsTwoCols{
-\subsection{Programming}
+\subsection{Scientific Programming}
 \vspace{5pt}
 \begin{tabular}{rl}
-     {\thinfont\color{headercolor}{MATLAB}} & {Extensive use}\\
-     {\thinfont\color{headercolor}{Ruby}} & {Casual use}\\
-     {\thinfont\color{headercolor}{java, C++}} & {Competent}\\
-     {\thinfont\color{headercolor}{Python}} & {Little experience}\\
+     {\thinfont\color{headercolor}{MATLAB / Julia}} & {Extensive use}\\
+     {\thinfont\color{headercolor}{java / C++}} & {Competent}\\
+     {\thinfont\color{headercolor}{Ruby / Python / Stan}} & {Little experience}\\
 \end{tabular}
 }{
 \subsection{Languages}
@@ -230,38 +245,58 @@
 }
 
 
-\vspace{5pt}
+\newpage
 \section{References}
-\cvRefsThreeCols{
-    \cvreference
-      {Mark Holzer}
-      {Department of Applied Mathematics\\
-       School of Mathematics and Statistics\\
-       University of New South Wales\\
-       NSW, 2035, Australia}
-      {mholzer}
-      {unsw.edu.au}
-      {+61 2 9385 7109}%
-  }{
-    \cvreference
-      {Trevor McDougall}
-      {Department of Applied Mathematics\\
-       School of Mathematics and Statistics\\
-       University of New South Wales\\
-       NSW, 2035, Australia}
-      {trevor.mcdougall}
-      {unsw.edu.au}
-      {+61 2 9385 3498}
-  }{
-   % \vspace{10pt}
-    \cvreference
-      {Katrin Meissner}
-      {Climate Change Research Centre\\
-       University of New South Wales\\
-       NSW, 2035, Australia}
-      {k.meissner}
-      {unsw.edu.au}
-      {+61 2 9385 8962}
+\cvRefsTwoCols{
+  % First column
+  \phantomsection \label{FP}
+  \cvreference
+    {Fran\c{c}ois Primeau}
+    {Department of Earth System Science\\
+     University of California, Irvine\\
+     CA, 92697, USA}
+    {fprimeau}
+    {uci.edu}
+    {?}%
+  \phantomsection \label{MH}
+  \cvreference
+    {Mark Holzer}
+    {Department of Applied Mathematics\\
+     School of Mathematics and Statistics\\
+     University of New South Wales\\
+     NSW, 2035, Australia}
+    {mholzer}
+    {unsw.edu.au}
+    {+61 2 9385 7109}
+  \cvreference
+    {Trevor McDougall}
+    {Department of Applied Mathematics\\
+     School of Mathematics and Statistics\\
+     University of New South Wales\\
+     NSW, 2035, Australia}
+    {trevor.mcdougall}
+    {unsw.edu.au}
+    {+61 2 9385 3498}
+}
+{% Second column
+  \phantomsection \label{JKM}
+  \cvreference
+    {J.\,Keith Moore}
+    {Department of Earth System Science\\
+     University of California, Irvine\\
+     CA, 92697, USA}
+    {jkmoore}
+    {uci.edu}
+    {?}%
+  \phantomsection \label{KM}
+  \cvreference
+    {Katrin Meissner}
+    {Climate Change Research Centre\\
+     University of New South Wales\\
+     NSW, 2035, Australia}
+    {k.meissner}
+    {unsw.edu.au}
+    {+61 2 9385 8962}
    % \cvreference
    %   {Andreas Oschlies?}
    %   {GEOMAR Helmholtz Centre for Ocean Research Kiel\\
@@ -270,53 +305,15 @@
    %   {aoschlies}
    %   {geomar.de}
    %   {+49 431 600-1936}%
-  }
+}
 \vspace{10pt}
 
-\section{Publications}
 
-Pasquier, B. and M.\,Holzer, \emph{Iron fertilization efficiency and the number of past and future regenerations of iron in the ocean}, Global Biogeochemical Cycles, under review.
-
-Pasquier, B. and M.\,Holzer, \emph{Inverse-model estimates of the ocean's coupled phosphorus, silicon, and iron cycles}, Biogeosciences, 14(18), 4125--4159, \href{http://dx.doi.org/10.5194/bg-14-4125-2017}{doi: 10.5194/bg-14-4125-2017}, 2017.
-
-Holzer, M., M.\,Frants, and B.\,Pasquier, \emph{The age of iron and iron source attribution in the ocean}, Global Biogeochem. Cycles, 30, 1454--1474, \href{http://dx.doi.org/10.1002/2016GB005418}{doi: 10.1002/2016GB005418}, 2016.
-
-Pasquier, B. and M.\,Holzer, \emph{The plumbing of the global biological pump: Efficiency control through leaks, pathways, and time scales}, Journal of Geophysical Research: Oceans, 121, 6367--6388, \href{http://dx.doi.org/10.1002/2016JC011821}{doi: 10.1002/2016JC011821}, 2016.
-
-
-
-%\subsection{In Press}
-
-%\subsection{Under Review}
-
-%\subsection{In Preparation}
-
-
+\printbibsection{article}{\color{pblue}{Pub}lications}
 
 \newpage
+\printbibsection{inproceedings}{Con{\color{pblue}f}erence {\color{pblue}Pres}entations}
 
-\section{Con{\color{pblue}f}erence {\color{pblue}Pres}entations}
-\begin{entrylist}
-
-  \entry{February 2018}{Ocean Sciences Meeting}{Portland, Oregon, USA}
-  {Title: \emph{Inverse-model estimates of the ocean's coupled phosphorus, silicon, and iron cycles.}
-  }
-
-  \entry{February 2017}{AMOS National Conference}{Canberra, Australia}
-  {Title: \emph{Response of the biological pump to perturbations in the iron supply: Global teleconnections diagnosed using an inverse model of the coupled phosphorus-silicon-iron nutrient cycles.}
-  }
-
-  \entry{February 2016}{Ocean Sciences Meeting}{New Orleans, Louisiana, USA}
-  {Title: \emph{Iron control on global productivity: an efficient inverse model of the ocean's coupled phosphate, silicon, and iron cycles.}
-  }
-
-  \entry{July 2015}{AMOS National Conference}{Brisbane, Australia}
-  {Title: \emph{The plumbing of the global biological pump.}
-  }
-
-
-
-\end{entrylist}
 
 \section{Honors and Awards}
 \begin{entrylist}

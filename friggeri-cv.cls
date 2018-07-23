@@ -32,6 +32,7 @@
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
 \definecolor{pblue}{HTML}{0395DE}
+\definecolor{earthblue}{HTML}{0000A0}
 
 \ifdefined\@cv@print
   \colorlet{green}{gray}
@@ -174,7 +175,8 @@
 \setlength{\tabcolsep}{3pt}
 \newenvironment{entrylist}{%
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rl}
-}{
+}
+{
   \end{tabular*}
 }
 %\newcommand{\bfseriesfoo}{\headingfont\color{headercolor}}
@@ -210,115 +212,173 @@
 %  \let\section\oldsection
 %}
 
+
 %%%%%%%%%%%%%%%%
 % Bibliography %
 %%%%%%%%%%%%%%%%
 
-%\RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
-%
-%\DeclareFieldFormat[article]{title}{#1\par}
-%\DeclareFieldFormat[inproceedings]{title}{#1\par}
-%\DeclareFieldFormat[misc]{title}{#1\par}
-%\DeclareFieldFormat[report]{title}{#1\par}
-%
-%\DeclareBibliographyDriver{article}{%
-%  \printfield{title}%
-%  \newblock%
-%  \printnames{author}%
-%  \par%
-%  \newblock%
-%  {%
-%    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-%    \usebibmacro{journal+issuetitle}%
-%    \setunit{\space}%
-%    \printfield{pages}%
-%   \newunit%
-%    \printlist{publisher}%
-%    \setunit*{\addcomma\space}%
-%    \printfield{year}%
-%    \newunit%
-%  }
-%  \par\vspace{0.3\baselineskip}
-%}
-%
-%\DeclareBibliographyDriver{inproceedings}{%
-%  \printfield{title}%
-%  \newblock%
-%  \printnames{author}%
-%  \par%
-%  \newblock%
-%  {%
-%    \footnotesize\addfontfeature{Color=lightgray}%
-%    \printfield{booktitle}%
-%    \setunit{\addcomma\space}%
-%    \printfield{year}%
-%    \setunit{\addcomma\space}%
-%    \printlist{location}%
-%    \newunit%
-%  }
-%  \par\vspace{0.3\baselineskip}
-%}
-%
-%\DeclareBibliographyDriver{misc}{%
-%  \printfield{title}%
-%  \newblock%
-%  \printnames{author}%
-%  \par%
-%  \newblock%
-%  {%
-%    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-%    \printfield{booktitle}%
-%    \setunit*{\addcomma\space}%
-%    \printfield{note}%
-%    \setunit*{\addcomma\space}%
-%    \printfield{year}%
-%    \setunit{\addcomma\space}%
-%    \printlist{location}%
-%    \newunit%
-%  }
-%  \par\vspace{0.3\baselineskip}
-%}
-%
-%\DeclareBibliographyDriver{report}{%
-%  \printfield{title}%
-%  \newblock%
-%  \printnames{author}%
-%  \par%
-%  \newblock%
-%  {%
-%    \footnotesize\addfontfeature{Color=lightgray}\itshape%
-%    \printfield{type}%
-%    \setunit{\space}%
-%    \printfield{number}%
-%    \setunit{\addcomma\space}%
-%    \printfield{year}%
-%    \newunit%
-%  }
-%  \par\vspace{0.3\baselineskip}
-%}
-%
-%\DeclareNameFormat{author}{%
-%  \small\addfontfeature{Color=lightgray}%
-%  \ifblank{#3}{}{#3\space}#1%
-%  \ifthenelse{\value{listcount}<\value{liststop}}
-%    {\addcomma\space}
-%    {}%
-%}
-%
-%\newcommand{\printbibsection}[2]{
-%  \begin{refsection}
-%    \nocite{*}
-%    \printbibliography[sorting=chronological, type={#1}, title={#2}, %heading=subbibliography]
-%  \end{refsection}
-%}
-%
-%\DeclareSortingScheme{chronological}{
-%  \sort[direction=descending]{\field{year}}
-%  \sort[direction=descending]{\field{month}}
-%}
-%
-%
-%
+\RequirePackage[style=numeric, defernumbers=true, maxnames=99, backend=biber]{biblatex}
+\setlength\bibhang{0pt}
+
+\defbibenvironment{bibliography}{%
+  \list
+    {\printfield[labelnumberwidth]{labelnumber}}
+    {%
+      \setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{-\labelwidth}% <- Changed
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+    }%
+  \renewcommand*{\makelabel}[1]{\hss##1}%
+}
+{\endlist}
+{\item}
+
+\DeclareFieldFormat[article]{title}{#1\par}
+\DeclareFieldFormat[book]{title}{#1\par}
+\DeclareFieldFormat[inproceedings]{title}{#1\par}
+\DeclareFieldFormat[misc]{title}{#1\par}
+\DeclareFieldFormat[report]{title}{#1\par}
+
+\def\newblock{\hskip 0pt plus 0pt minus 0pt}
+
+%\renewcommand*{\finentrypunct}{\ifboolexpr{togl {bbx:doi} and not test {\iffieldundef{doi}}}{}{\addperiod}}
+
+\DeclareBibliographyDriver{article}{%
+  \printfield{title}%
+  \nopagebreak\newblock%
+  \printnames{author}%
+  \par%
+  \newblock%
+  {%
+    \footnotesize\addfontfeature{Color=gray}\itshape%
+    \usebibmacro{journal+issuetitle}%
+    \setunit{\space}%
+    \printfield{pages}%
+    \newunit%
+    \printlist{publisher}%
+    %\setunit*{\addcomma\space}%
+    \setunit{\space}%
+  }
+  {\footnotesize\hfill
+    \textcolor{gray}{\printfield{doi}}
+  }
+  \newunit%
+  \finentry%
+  \par\vspace{0.3\baselineskip}
+}
+
+\DeclareBibliographyDriver{book}{%
+  \printfield{title}%
+  \nopagebreak\newblock%
+  \printnames{author}%
+  \par%
+  \newblock%
+  {%
+    \footnotesize\addfontfeature{Color=gray}\itshape%
+    \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+    \printfield{note}%
+    \setunit*{\addcomma\space}%
+    \printfield{year}%
+    \setunit{\addcomma\space}%
+    \printlist{location}%
+    \newunit%
+    \finentry%
+  }
+  \par\vspace{0.3\baselineskip}
+}
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \printfield{title}%
+  \nopagebreak\newblock%
+  \printnames{author}%
+  \par%
+  \newblock%
+  {%
+    \footnotesize\addfontfeature{Color=gray}%
+    \printfield{booktitle}%
+    \setunit{\addcomma\space}%
+    \printfield{year}%
+    \setunit{\addcomma\space}%
+    \printlist{location}%
+    \newunit%
+    \finentry%
+  }
+  \par\vspace{0.3\baselineskip}
+}
+
+\DeclareBibliographyDriver{misc}{%
+  \printfield{title}%
+  \nopagebreak\newblock%
+  \printnames{author}%
+  \par%
+  \newblock%
+  {%
+    \footnotesize\addfontfeature{Color=gray}\itshape%
+    \printfield{booktitle}%
+    \setunit*{\addcomma\space}%
+    \printfield{note}%
+    \setunit*{\addcomma\space}%
+    \printfield{year}%
+    \setunit{\addcomma\space}%
+    \printlist{location}%
+    \newunit%
+    \finentry%
+  }
+  \par\vspace{0.3\baselineskip}
+}
+
+\DeclareBibliographyDriver{report}{%
+  \printfield{title}%
+  \nopagebreak\newblock%
+  \printnames{author}%
+  \par%
+  \newblock%
+  {%
+    \footnotesize\addfontfeature{Color=gray}\itshape%
+    \printfield{type}%
+    \setunit{\space}%
+    \printfield{number}%
+    \setunit{\addcomma\space}%
+    \printfield{year}%
+    \newunit%
+    \finentry%
+  }
+  \par\vspace{0.3\baselineskip}
+}
+
+% biblatex name formatting changed with version 3.3.
+% After this change the line "\ifblank{#3}{}{#3\space}#1%" gives an error.
+% See also: http://tex.stackexchange.com/questions/327316/updating-friggeris-cv-making-it-work-with-texlive-2015-and-up-too-many-erro
+
+\DeclareNameFormat{author}{%
+  \small\addfontfeature{Color=gray}%
+  \nameparts{#1}\ifblank{\namepartgiven}{}{\namepartgiven\space}\namepartfamily%
+  \ifthenelse{\value{listcount}<\value{liststop}}
+    {\addcomma\space}
+    {}%
+}
+
+% Astreisk
+\defbibheading{subbibliography}[\refname]{\section{#1}}
+
+\newcommand{\printbibsection}[2]{
+  \begin{refsection}
+    \nocite{*}
+    \newrefcontext[sorting=chronological]
+    %\printbibliography[type={#1}, title={#2}, heading=section]
+    \printbibliography[type={#1}, title={#2}, heading=subbibliography]
+  \end{refsection}
+}
+
+\DeclareSortingTemplate{chronological}{
+  \sort[direction=descending]{\field{year}}
+  \sort[direction=descending]{\field{month}}
+}
+
 %%%%%%%%%%%%%%%%
 % Other tweaks %
 %%%%%%%%%%%%%%%%
