@@ -2,10 +2,12 @@
 \documentclass[12pt]{friggeri-cv}
 \addbibresource{mypapers.bib}
 
+\definecolor{darker_blue}{HTML}{4063D8}
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,       % no lik border color
-    allcolors=earthblue,         % color of internal links (change box color with linkbordercolor)
+    allcolors=darker_blue,         % color of internal links (change box color with linkbordercolor)
     allbordercolors=white  % white border color for all
 }
 %\addbibresource{bibliography.bib}
@@ -26,12 +28,11 @@
   \begin{minipage}[t]{.4\textwidth}#2\end{minipage}
 }
 
-\newcommand{\cvreference}[5]{
+\newcommand{\cvreference}[4]{
     {\headingfont\color{headercolor}#1}\\
     {#2}
     \begin{flushright}
-    {\faEnvelope~\href{mailto:#3@#4}{\textbf{#3}@#4}\\}
-    {\faMobile~#5\\}
+    {\href{mailto:#3@#4}{\textbf{#3}@#4}\\}
     \end{flushright}
 }
 
@@ -257,7 +258,6 @@ In addition, I strive to push our scientific community towards more openness, to
      CA, 92697, USA}
     {fprimeau}
     {uci.edu}
-    {?}%
   \phantomsection \label{MH}
   \cvreference
     {Mark Holzer}
@@ -267,7 +267,6 @@ In addition, I strive to push our scientific community towards more openness, to
      NSW, 2035, Australia}
     {mholzer}
     {unsw.edu.au}
-    {+61 2 9385 7109}
   \cvreference
     {Trevor McDougall}
     {Department of Applied Mathematics\\
@@ -276,7 +275,6 @@ In addition, I strive to push our scientific community towards more openness, to
      NSW, 2035, Australia}
     {trevor.mcdougall}
     {unsw.edu.au}
-    {+61 2 9385 3498}
 }
 {% Second column
   \phantomsection \label{JKM}
@@ -287,7 +285,14 @@ In addition, I strive to push our scientific community towards more openness, to
      CA, 92697, USA}
     {jkmoore}
     {uci.edu}
-    {?}%
+  \phantomsection \label{PR}
+  \cvreference
+    {Patrick Rafter}
+    {Department of Earth System Science\\
+     University of California, Irvine\\
+     CA, 92697, USA}
+    {prafter}
+    {uci.edu}
   \phantomsection \label{KM}
   \cvreference
     {Katrin Meissner}
@@ -296,15 +301,6 @@ In addition, I strive to push our scientific community towards more openness, to
      NSW, 2035, Australia}
     {k.meissner}
     {unsw.edu.au}
-    {+61 2 9385 8962}
-   % \cvreference
-   %   {Andreas Oschlies?}
-   %   {GEOMAR Helmholtz Centre for Ocean Research Kiel\\
-   %    D\"{u}sternbrooker Weg 20\\
-   %    D-24105 Kiel, Germany}
-   %   {aoschlies}
-   %   {geomar.de}
-   %   {+49 431 600-1936}%
 }
 \vspace{10pt}
 
